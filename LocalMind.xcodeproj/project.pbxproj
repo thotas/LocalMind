@@ -1,0 +1,476 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		20A6B39D64AE39F1813FFDE0 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E4CDD49438B7B6FC165D97 /* Conversation.swift */; };
+		2BDEC2B997F0BAD64482A683 /* FolderPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16359BFD63DDE7000D88EE61 /* FolderPickerSheet.swift */; };
+		5A0D95A55F39CD59A17882E6 /* FileParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA2E6661615DBFFD950C77C /* FileParser.swift */; };
+		61FF580D49090D91F9DD97FD /* OllamaClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C300258D156391FA6FCCE68F /* OllamaClient.swift */; };
+		6F6B7A8730F1C8C061B2B32D /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8443D14D84E086DC41D320 /* ChatView.swift */; };
+		724A22923D3AC4852E337071 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A3C42314BF822EF0FD7F3C /* AppState.swift */; };
+		8C88591481FF3DB3B6EC3FCA /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF38F851E54431FFAD20C6 /* Settings.swift */; };
+		8CC5E30A46B787B14AC0CF9E /* LocalMindApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D54673AAD5DCD4678BD7FDE /* LocalMindApp.swift */; };
+		91315C6A71EC339D567D878A /* TextChunker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F9514B97127EBA4048D3E0 /* TextChunker.swift */; };
+		993B090C6C53AF3A8ABF4593 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCAB918FB5991FE5567741 /* DatabaseManager.swift */; };
+		AE46411DAB1A54368C5C0DDF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C6C54A3AFF2B4BC31C9593 /* SettingsView.swift */; };
+		B6AEDAB4104982412B75A501 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 4D0F3DB5E1997E33D5DD225E /* ZIPFoundation */; };
+		BFA8754A197EB2C551D3EE82 /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8E74F28A5754B392C8951E /* Folder.swift */; };
+		C397CEF9783AF4B840F2DB11 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073A216FE68A270CD73E1E85 /* SidebarView.swift */; };
+		C8E2A1FDDEB921FC9E91778E /* RetrievalEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A6FA46E9BBD7996313B1F0 /* RetrievalEngine.swift */; };
+		DE29623188E108A5F5F6FD35 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = C194FA79643ECE80E2EFEC3C /* GRDB */; };
+		F0DD9B2D29687CCFF3140F8C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15BACC1A642272EEF727E2 /* ContentView.swift */; };
+		FA014744BFA699D03B3AC001 /* IndexingEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF24DD227616D628ABAC334 /* IndexingEngine.swift */; };
+		FC632F7533FC8E10676423D5 /* Chunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1C66598560EB601925D13E /* Chunk.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		073A216FE68A270CD73E1E85 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
+		0D54673AAD5DCD4678BD7FDE /* LocalMindApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalMindApp.swift; sourceTree = "<group>"; };
+		10C6C54A3AFF2B4BC31C9593 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		16359BFD63DDE7000D88EE61 /* FolderPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderPickerSheet.swift; sourceTree = "<group>"; };
+		1A1C66598560EB601925D13E /* Chunk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chunk.swift; sourceTree = "<group>"; };
+		4D15BACC1A642272EEF727E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5BFCAB918FB5991FE5567741 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		5EF24DD227616D628ABAC334 /* IndexingEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexingEngine.swift; sourceTree = "<group>"; };
+		6D8E74F28A5754B392C8951E /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
+		6EA2E6661615DBFFD950C77C /* FileParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileParser.swift; sourceTree = "<group>"; };
+		70A6FA46E9BBD7996313B1F0 /* RetrievalEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrievalEngine.swift; sourceTree = "<group>"; };
+		80BF38F851E54431FFAD20C6 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		88D6F793A2C73ABC849255CF /* LocalMind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		97A3C42314BF822EF0FD7F3C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		C1B700FABE7C897C473E0F9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C300258D156391FA6FCCE68F /* OllamaClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OllamaClient.swift; sourceTree = "<group>"; };
+		C4D150067F8F5C6C7B514592 /* LocalMind.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LocalMind.entitlements; sourceTree = "<group>"; };
+		D8F9514B97127EBA4048D3E0 /* TextChunker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextChunker.swift; sourceTree = "<group>"; };
+		E6E4CDD49438B7B6FC165D97 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		FB8443D14D84E086DC41D320 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		70FFA6A7ADEE1C671CCAAF7B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE29623188E108A5F5F6FD35 /* GRDB in Frameworks */,
+				B6AEDAB4104982412B75A501 /* ZIPFoundation in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0C9EF721FA8079CA04BD9E6F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1A1C66598560EB601925D13E /* Chunk.swift */,
+				E6E4CDD49438B7B6FC165D97 /* Conversation.swift */,
+				6D8E74F28A5754B392C8951E /* Folder.swift */,
+				80BF38F851E54431FFAD20C6 /* Settings.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2AFD2E85F78D881F392EB965 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		63CFFECA80296A75FA8A4353 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		69BB8EBE5FE0DE9E1C6B1F14 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				97A3C42314BF822EF0FD7F3C /* AppState.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A60791D18F61FA50A2466BD4 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				0D54673AAD5DCD4678BD7FDE /* LocalMindApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		AD07E2051ACE1DA0F534D8AD = {
+			isa = PBXGroup;
+			children = (
+				D6DF66ADA433418509830B1B /* LocalMind */,
+				C0E8456838C823FBAEFED11F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C0E8456838C823FBAEFED11F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				88D6F793A2C73ABC849255CF /* LocalMind.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D6DF66ADA433418509830B1B /* LocalMind */ = {
+			isa = PBXGroup;
+			children = (
+				A60791D18F61FA50A2466BD4 /* App */,
+				0C9EF721FA8079CA04BD9E6F /* Models */,
+				F205F5BEEA4DA621F3AC4F79 /* Resources */,
+				F0DD210826A75894855CA476 /* Services */,
+				2AFD2E85F78D881F392EB965 /* Utilities */,
+				69BB8EBE5FE0DE9E1C6B1F14 /* ViewModels */,
+				FA679C733F3970746C79FCE5 /* Views */,
+			);
+			path = LocalMind;
+			sourceTree = "<group>";
+		};
+		F0DD210826A75894855CA476 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5BFCAB918FB5991FE5567741 /* DatabaseManager.swift */,
+				6EA2E6661615DBFFD950C77C /* FileParser.swift */,
+				5EF24DD227616D628ABAC334 /* IndexingEngine.swift */,
+				C300258D156391FA6FCCE68F /* OllamaClient.swift */,
+				70A6FA46E9BBD7996313B1F0 /* RetrievalEngine.swift */,
+				D8F9514B97127EBA4048D3E0 /* TextChunker.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F205F5BEEA4DA621F3AC4F79 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C1B700FABE7C897C473E0F9F /* Info.plist */,
+				C4D150067F8F5C6C7B514592 /* LocalMind.entitlements */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FA679C733F3970746C79FCE5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FB8443D14D84E086DC41D320 /* ChatView.swift */,
+				4D15BACC1A642272EEF727E2 /* ContentView.swift */,
+				16359BFD63DDE7000D88EE61 /* FolderPickerSheet.swift */,
+				10C6C54A3AFF2B4BC31C9593 /* SettingsView.swift */,
+				073A216FE68A270CD73E1E85 /* SidebarView.swift */,
+				63CFFECA80296A75FA8A4353 /* Components */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BA6DD80670430194F58AF486 /* LocalMind */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 173DF85C75102ACF06C58039 /* Build configuration list for PBXNativeTarget "LocalMind" */;
+			buildPhases = (
+				6081071EBB26E81C5C03F33A /* Sources */,
+				70FFA6A7ADEE1C671CCAAF7B /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LocalMind;
+			packageProductDependencies = (
+				C194FA79643ECE80E2EFEC3C /* GRDB */,
+				4D0F3DB5E1997E33D5DD225E /* ZIPFoundation */,
+			);
+			productName = LocalMind;
+			productReference = 88D6F793A2C73ABC849255CF /* LocalMind.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2A139A10FCED0AB209A6291C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					BA6DD80670430194F58AF486 = {
+						DevelopmentTeam = "";
+					};
+				};
+			};
+			buildConfigurationList = 4E098D848DF7A287F962CCB9 /* Build configuration list for PBXProject "LocalMind" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = AD07E2051ACE1DA0F534D8AD;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				1915733FB8E5A1E132EA212B /* XCRemoteSwiftPackageReference "GRDB.swift" */,
+				5DE255ED847BBBF7E63E53F2 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
+			);
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BA6DD80670430194F58AF486 /* LocalMind */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6081071EBB26E81C5C03F33A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				724A22923D3AC4852E337071 /* AppState.swift in Sources */,
+				6F6B7A8730F1C8C061B2B32D /* ChatView.swift in Sources */,
+				FC632F7533FC8E10676423D5 /* Chunk.swift in Sources */,
+				F0DD9B2D29687CCFF3140F8C /* ContentView.swift in Sources */,
+				20A6B39D64AE39F1813FFDE0 /* Conversation.swift in Sources */,
+				993B090C6C53AF3A8ABF4593 /* DatabaseManager.swift in Sources */,
+				5A0D95A55F39CD59A17882E6 /* FileParser.swift in Sources */,
+				BFA8754A197EB2C551D3EE82 /* Folder.swift in Sources */,
+				2BDEC2B997F0BAD64482A683 /* FolderPickerSheet.swift in Sources */,
+				FA014744BFA699D03B3AC001 /* IndexingEngine.swift in Sources */,
+				8CC5E30A46B787B14AC0CF9E /* LocalMindApp.swift in Sources */,
+				61FF580D49090D91F9DD97FD /* OllamaClient.swift in Sources */,
+				C8E2A1FDDEB921FC9E91778E /* RetrievalEngine.swift in Sources */,
+				8C88591481FF3DB3B6EC3FCA /* Settings.swift in Sources */,
+				AE46411DAB1A54368C5C0DDF /* SettingsView.swift in Sources */,
+				C397CEF9783AF4B840F2DB11 /* SidebarView.swift in Sources */,
+				91315C6A71EC339D567D878A /* TextChunker.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0B2C4B7BE8E5E3C73BB2F786 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		11C726943C694556299361B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LocalMind/Resources/LocalMind.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = LocalMind/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.localmind.app;
+				PRODUCT_NAME = LocalMind;
+				SDKROOT = macosx;
+				SWIFT_STRICT_CONCURRENCY = complete;
+			};
+			name = Release;
+		};
+		544459743095C6E5B65BB0A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LocalMind/Resources/LocalMind.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = LocalMind/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.localmind.app;
+				PRODUCT_NAME = LocalMind;
+				SDKROOT = macosx;
+				SWIFT_STRICT_CONCURRENCY = complete;
+			};
+			name = Debug;
+		};
+		AE5475C61F4159CC1631D6D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		173DF85C75102ACF06C58039 /* Build configuration list for PBXNativeTarget "LocalMind" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				544459743095C6E5B65BB0A5 /* Debug */,
+				11C726943C694556299361B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		4E098D848DF7A287F962CCB9 /* Build configuration list for PBXProject "LocalMind" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE5475C61F4159CC1631D6D3 /* Debug */,
+				0B2C4B7BE8E5E3C73BB2F786 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1915733FB8E5A1E132EA212B /* XCRemoteSwiftPackageReference "GRDB.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/GRDB.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		5DE255ED847BBBF7E63E53F2 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.19;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4D0F3DB5E1997E33D5DD225E /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DE255ED847BBBF7E63E53F2 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
+		};
+		C194FA79643ECE80E2EFEC3C /* GRDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1915733FB8E5A1E132EA212B /* XCRemoteSwiftPackageReference "GRDB.swift" */;
+			productName = GRDB;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 2A139A10FCED0AB209A6291C /* Project object */;
+}

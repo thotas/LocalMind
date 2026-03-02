@@ -11,8 +11,8 @@ struct AppSettings: Sendable {
 
     static let `default` = AppSettings(
         ollamaBaseURL: "http://localhost:11434",
-        chatModel: "llama3.2",
-        embeddingModel: "nomic-embed-text",
+        chatModel: "llama3",
+        embeddingModel: "nomic-embed-text-v2-moe",
         chunkSize: 2000,
         chunkOverlap: 200,
         topK: 5,

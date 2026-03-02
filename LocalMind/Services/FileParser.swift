@@ -1,5 +1,6 @@
 import Foundation
 import PDFKit
+import Vision
 import ZIPFoundation
 
 protocol FileParser: Sendable {
@@ -25,11 +26,16 @@ struct TextFileParser: FileParser {
 struct PDFFileParser: FileParser {
     let supportedExtensions: Set<String> = ["pdf"]
 
+    /// Minimum average characters per page to consider text extraction successful.
+    /// Below this threshold, we assume the PDF is scanned and fall back to OCR.
+    private let minCharsPerPage = 20
+
     func parse(fileAt url: URL) throws -> String {
         guard let document = PDFDocument(url: url) else {
             throw ParserError.cannotOpen(url.path)
         }
 
+        // First try native text extraction (fast, works for digital PDFs)
         var text = ""
         for i in 0..<document.pageCount {
             if let page = document.page(at: i), let pageText = page.string {
@@ -38,11 +44,98 @@ struct PDFFileParser: FileParser {
             }
         }
 
-        guard !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+        let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        let avgCharsPerPage = document.pageCount > 0 ? trimmed.count / document.pageCount : 0
+
+        // If text extraction yielded enough content, use it
+        if avgCharsPerPage >= minCharsPerPage {
+            return text
+        }
+
+        // Fall back to OCR for scanned/image-based PDFs
+        return try ocrPDF(document: document, url: url)
+    }
+
+    private func ocrPDF(document: PDFDocument, url: URL) throws -> String {
+        var allText = ""
+
+        for i in 0..<document.pageCount {
+            guard let page = document.page(at: i) else { continue }
+
+            // Render the PDF page to a CGImage
+            let pageRect = page.bounds(for: .mediaBox)
+            let scale: CGFloat = 2.0 // 2x for better OCR accuracy
+            let width = Int(pageRect.width * scale)
+            let height = Int(pageRect.height * scale)
+
+            guard let colorSpace = CGColorSpace(name: CGColorSpace.sRGB),
+                  let context = CGContext(
+                      data: nil,
+                      width: width,
+                      height: height,
+                      bitsPerComponent: 8,
+                      bytesPerRow: 0,
+                      space: colorSpace,
+                      bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue
+                  ) else { continue }
+
+            context.setFillColor(.white)
+            context.fill(CGRect(x: 0, y: 0, width: width, height: height))
+            context.scaleBy(x: scale, y: scale)
+
+            // PDFKit renders in the page's coordinate system
+            page.draw(with: .mediaBox, to: context)
+
+            guard let cgImage = context.makeImage() else { continue }
+
+            // Run OCR via Vision
+            let pageText = try ocrImage(cgImage)
+            if !pageText.isEmpty {
+                allText += pageText
+                allText += "\n\n"
+            }
+        }
+
+        guard !allText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
             throw ParserError.noContent(url.path)
         }
 
-        return text
+        return allText
+    }
+
+    private func ocrImage(_ image: CGImage) throws -> String {
+        var result = ""
+        var ocrError: Error?
+
+        let request = VNRecognizeTextRequest { request, error in
+            if let error {
+                ocrError = error
+                return
+            }
+            guard let observations = request.results as? [VNRecognizedTextObservation] else { return }
+
+            // Sort observations top-to-bottom by their bounding box
+            let sorted = observations.sorted { a, b in
+                a.boundingBox.origin.y > b.boundingBox.origin.y
+            }
+
+            let lines = sorted.compactMap { observation in
+                observation.topCandidates(1).first?.string
+            }
+            result = lines.joined(separator: "\n")
+        }
+
+        request.recognitionLevel = .accurate
+        request.usesLanguageCorrection = true
+
+        let handler = VNImageRequestHandler(cgImage: image, options: [:])
+        try handler.perform([request])
+
+        if let error = ocrError {
+            throw error
+        }
+
+        return result
     }
 }
 

@@ -78,9 +78,12 @@ struct EmptyStateView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            Image(systemName: "brain.head.profile")
-                .font(.system(size: 48))
-                .foregroundStyle(.tertiary)
+            Image("AppLogo")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 80, height: 80)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+                .shadow(color: .black.opacity(0.15), radius: 8, y: 4)
 
             VStack(spacing: 8) {
                 Text("Ask Your Documents")
@@ -183,9 +186,17 @@ struct MessageBubble: View {
                 VStack(alignment: message.role == .user ? .trailing : .leading, spacing: 6) {
                     // Role indicator
                     HStack(spacing: 6) {
-                        Image(systemName: message.role == .user ? "person.circle" : "brain.head.profile")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+                        if message.role == .user {
+                            Image(systemName: "person.circle")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        } else {
+                            Image("AppLogo")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 16, height: 16)
+                                .clipShape(RoundedRectangle(cornerRadius: 3))
+                        }
                         Text(message.role == .user ? "You" : "LocalMind")
                             .font(.caption)
                             .foregroundStyle(.secondary)
@@ -227,9 +238,11 @@ struct StreamingBubble: View {
             HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 6) {
                     HStack(spacing: 6) {
-                        Image(systemName: "brain.head.profile")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+                        Image("AppLogo")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 16, height: 16)
+                            .clipShape(RoundedRectangle(cornerRadius: 3))
                         Text("LocalMind")
                             .font(.caption)
                             .foregroundStyle(.secondary)

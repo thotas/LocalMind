@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D6D576904CC1AF742897DF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4E276F0B73FCFD1A5916B60 /* Assets.xcassets */; };
 		20A6B39D64AE39F1813FFDE0 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E4CDD49438B7B6FC165D97 /* Conversation.swift */; };
 		2BDEC2B997F0BAD64482A683 /* FolderPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16359BFD63DDE7000D88EE61 /* FolderPickerSheet.swift */; };
 		5A0D95A55F39CD59A17882E6 /* FileParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA2E6661615DBFFD950C77C /* FileParser.swift */; };
@@ -43,6 +44,7 @@
 		80BF38F851E54431FFAD20C6 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		88D6F793A2C73ABC849255CF /* LocalMind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97A3C42314BF822EF0FD7F3C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		B4E276F0B73FCFD1A5916B60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1B700FABE7C897C473E0F9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C300258D156391FA6FCCE68F /* OllamaClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OllamaClient.swift; sourceTree = "<group>"; };
 		C4D150067F8F5C6C7B514592 /* LocalMind.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LocalMind.entitlements; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 		F205F5BEEA4DA621F3AC4F79 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B4E276F0B73FCFD1A5916B60 /* Assets.xcassets */,
 				C1B700FABE7C897C473E0F9F /* Info.plist */,
 				C4D150067F8F5C6C7B514592 /* LocalMind.entitlements */,
 			);
@@ -178,6 +181,7 @@
 			buildConfigurationList = 173DF85C75102ACF06C58039 /* Build configuration list for PBXNativeTarget "LocalMind" */;
 			buildPhases = (
 				6081071EBB26E81C5C03F33A /* Sources */,
+				02692C17BF4EEC96DFE23DF6 /* Resources */,
 				70FFA6A7ADEE1C671CCAAF7B /* Frameworks */,
 			);
 			buildRules = (
@@ -229,6 +233,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		02692C17BF4EEC96DFE23DF6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D6D576904CC1AF742897DF0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6081071EBB26E81C5C03F33A /* Sources */ = {

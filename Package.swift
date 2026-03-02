@@ -19,7 +19,7 @@ let package = Package(
                 .product(name: "ZIPFoundation", package: "ZIPFoundation"),
             ],
             path: "LocalMind",
-            exclude: ["Resources/Info.plist", "Resources/LocalMind.entitlements"],
+            exclude: ["Resources/Info.plist", "Resources/LocalMind.entitlements", "Resources/Assets.xcassets"],
             swiftSettings: [
                 .swiftLanguageMode(.v5)
             ]

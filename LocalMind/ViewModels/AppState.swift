@@ -9,6 +9,10 @@ final class AppState {
     var indexingProgress: [String: IndexingEngine.Progress] = [:]
     var showFolderPicker = false
 
+    // MARK: - Experts
+    var experts: [Expert] = []
+    var selectedExpert: Expert?
+
     // MARK: - Chat
     var conversations: [Conversation] = []
     var currentConversationId: String?
@@ -29,6 +33,7 @@ final class AppState {
     private let db = DatabaseManager.shared
     private let indexingEngine = IndexingEngine.shared
     private let retrievalEngine = RetrievalEngine()
+    private let expertManager = ExpertManager.shared
 
     var selectableFolders: [IndexedFolder] {
         folders.filter(\.isSelectable)
@@ -46,6 +51,7 @@ final class AppState {
             folders = try await db.fetchAllFolders()
             conversations = try await db.fetchConversations()
             await checkOllamaConnection()
+            await detectExperts()
 
             // Verify folder paths still exist
             for (index, folder) in folders.enumerated() where folder.status == .ready {
@@ -57,6 +63,17 @@ final class AppState {
         } catch {
             print("Initialization error: \(error)")
         }
+    }
+
+    // MARK: - Expert Management
+
+    func detectExperts() async {
+        guard settings.autoDetectExperts else { return }
+        experts = await expertManager.detectExperts(from: folders)
+    }
+
+    func refreshExperts() async {
+        await detectExperts()
     }
 
     // MARK: - Ollama Connection
@@ -225,8 +242,8 @@ final class AppState {
 
             let (context, sources) = retrievalEngine.buildContext(from: results)
 
-            // Build prompt
-            let systemPrompt = """
+            // Build prompt with optional expert instructions
+            var systemPrompt = """
             You are a helpful assistant that answers questions about the user's documents. \
             Use the following context from their files to answer the question. \
             If the context doesn't contain enough information to answer, say so. \
@@ -235,6 +252,17 @@ final class AppState {
             Context:
             \(context)
             """
+
+            // Add expert instructions if selected
+            if let expert = selectedExpert {
+                let expertInstructions = await expertManager.loadExpertInstructions(expert: expert) ?? expert.instructions
+                systemPrompt = """
+                \(systemPrompt)
+
+                === EXPERT MODE: \(expert.name) ===
+                \(expert.instructions)
+                """
+            }
 
             let ollamaMessages = [
                 OllamaChatMessage(role: "system", content: systemPrompt),
@@ -279,6 +307,7 @@ final class AppState {
         messages = []
         streamingResponse = ""
         chatError = nil
+        selectedExpert = nil
     }
 
     func loadConversation(_ conversation: Conversation) async {

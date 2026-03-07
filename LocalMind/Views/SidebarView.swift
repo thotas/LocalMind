@@ -60,6 +60,39 @@ struct SidebarView: View {
             Divider()
                 .listRowSeparator(.hidden)
 
+            // Experts section
+            Section {
+                if appState.experts.isEmpty {
+                    ContentUnavailableView {
+                        Label("No Experts", systemImage: "person.badge.key")
+                    } description: {
+                        Text("Create .md files with 'Expert' prefix in your folders.")
+                    }
+                    .listRowSeparator(.hidden)
+                } else {
+                    ForEach(appState.experts) { expert in
+                        ExpertRow(expert: expert)
+                    }
+                }
+            } header: {
+                HStack {
+                    Text("Experts")
+                        .font(.headline)
+                    Spacer()
+                    Button {
+                        Task { await appState.refreshExperts() }
+                    } label: {
+                        Image(systemName: "arrow.clockwise")
+                            .font(.caption)
+                    }
+                    .buttonStyle(.borderless)
+                    .help("Refresh Experts")
+                }
+            }
+
+            Divider()
+                .listRowSeparator(.hidden)
+
             // Conversations section
             Section {
                 Button {
@@ -245,5 +278,62 @@ struct ConversationRow: View {
         }
         .buttonStyle(.borderless)
         .padding(.vertical, 2)
+    }
+}
+
+struct ExpertRow: View {
+    @Environment(AppState.self) private var appState
+    let expert: Expert
+    @State private var isHovering = false
+
+    private var isActive: Bool {
+        appState.selectedExpert?.id == expert.id
+    }
+
+    var body: some View {
+        Button {
+            withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                if isActive {
+                    appState.selectedExpert = nil
+                } else {
+                    appState.selectedExpert = expert
+                }
+            }
+        } label: {
+            HStack(spacing: 10) {
+                // Selection indicator
+                Image(systemName: isActive ? "checkmark.circle.fill" : "circle")
+                    .foregroundStyle(isActive ? Color.orange : Color.secondary)
+                    .font(.body)
+
+                // Expert icon
+                Image(systemName: "person.badge.key.fill")
+                    .foregroundStyle(.orange)
+                    .font(.body)
+
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(expert.name)
+                        .font(.body)
+                        .lineLimit(1)
+
+                    if let description = expert.description {
+                        Text(description)
+                            .font(.caption2)
+                            .foregroundStyle(.tertiary)
+                            .lineLimit(1)
+                    } else {
+                        Text("from \(expert.sourceFolder)")
+                            .font(.caption2)
+                            .foregroundStyle(.tertiary)
+                    }
+                }
+
+                Spacer()
+            }
+            .padding(.vertical, 4)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.borderless)
+        .onHover { isHovering = $0 }
     }
 }

@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		1D6D576904CC1AF742897DF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4E276F0B73FCFD1A5916B60 /* Assets.xcassets */; };
 		20A6B39D64AE39F1813FFDE0 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E4CDD49438B7B6FC165D97 /* Conversation.swift */; };
+		2204AEB3C7371B8C2EDDBDAE /* Expert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93BF7BE17A364F546A0360 /* Expert.swift */; };
 		2BDEC2B997F0BAD64482A683 /* FolderPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16359BFD63DDE7000D88EE61 /* FolderPickerSheet.swift */; };
 		5A0D95A55F39CD59A17882E6 /* FileParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA2E6661615DBFFD950C77C /* FileParser.swift */; };
 		61FF580D49090D91F9DD97FD /* OllamaClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C300258D156391FA6FCCE68F /* OllamaClient.swift */; };
 		6F6B7A8730F1C8C061B2B32D /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8443D14D84E086DC41D320 /* ChatView.swift */; };
 		724A22923D3AC4852E337071 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A3C42314BF822EF0FD7F3C /* AppState.swift */; };
+		88A66EEE077124B38E182D59 /* ExpertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204FD7A3AC35912B4543E240 /* ExpertManager.swift */; };
 		8C88591481FF3DB3B6EC3FCA /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF38F851E54431FFAD20C6 /* Settings.swift */; };
 		8CC5E30A46B787B14AC0CF9E /* LocalMindApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D54673AAD5DCD4678BD7FDE /* LocalMindApp.swift */; };
 		91315C6A71EC339D567D878A /* TextChunker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F9514B97127EBA4048D3E0 /* TextChunker.swift */; };
@@ -35,6 +37,7 @@
 		10C6C54A3AFF2B4BC31C9593 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		16359BFD63DDE7000D88EE61 /* FolderPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderPickerSheet.swift; sourceTree = "<group>"; };
 		1A1C66598560EB601925D13E /* Chunk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chunk.swift; sourceTree = "<group>"; };
+		204FD7A3AC35912B4543E240 /* ExpertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertManager.swift; sourceTree = "<group>"; };
 		4D15BACC1A642272EEF727E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5BFCAB918FB5991FE5567741 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		5EF24DD227616D628ABAC334 /* IndexingEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexingEngine.swift; sourceTree = "<group>"; };
@@ -44,6 +47,7 @@
 		80BF38F851E54431FFAD20C6 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		88D6F793A2C73ABC849255CF /* LocalMind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97A3C42314BF822EF0FD7F3C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		9B93BF7BE17A364F546A0360 /* Expert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expert.swift; sourceTree = "<group>"; };
 		B4E276F0B73FCFD1A5916B60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1B700FABE7C897C473E0F9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C300258D156391FA6FCCE68F /* OllamaClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OllamaClient.swift; sourceTree = "<group>"; };
@@ -71,6 +75,7 @@
 			children = (
 				1A1C66598560EB601925D13E /* Chunk.swift */,
 				E6E4CDD49438B7B6FC165D97 /* Conversation.swift */,
+				9B93BF7BE17A364F546A0360 /* Expert.swift */,
 				6D8E74F28A5754B392C8951E /* Folder.swift */,
 				80BF38F851E54431FFAD20C6 /* Settings.swift */,
 			);
@@ -141,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				5BFCAB918FB5991FE5567741 /* DatabaseManager.swift */,
+				204FD7A3AC35912B4543E240 /* ExpertManager.swift */,
 				6EA2E6661615DBFFD950C77C /* FileParser.swift */,
 				5EF24DD227616D628ABAC334 /* IndexingEngine.swift */,
 				C300258D156391FA6FCCE68F /* OllamaClient.swift */,
@@ -256,6 +262,8 @@
 				F0DD9B2D29687CCFF3140F8C /* ContentView.swift in Sources */,
 				20A6B39D64AE39F1813FFDE0 /* Conversation.swift in Sources */,
 				993B090C6C53AF3A8ABF4593 /* DatabaseManager.swift in Sources */,
+				2204AEB3C7371B8C2EDDBDAE /* Expert.swift in Sources */,
+				88A66EEE077124B38E182D59 /* ExpertManager.swift in Sources */,
 				5A0D95A55F39CD59A17882E6 /* FileParser.swift in Sources */,
 				BFA8754A197EB2C551D3EE82 /* Folder.swift in Sources */,
 				2BDEC2B997F0BAD64482A683 /* FolderPickerSheet.swift in Sources */,

@@ -122,44 +122,60 @@ struct InputBar: View {
     var body: some View {
         @Bindable var state = appState
 
-        HStack(alignment: .bottom, spacing: 12) {
-            // Selected folder pills
-            if appState.hasSelectedFolders {
-                HStack(spacing: 4) {
-                    let count = appState.selectedFolderIds.count
-                    Image(systemName: "folder.fill")
-                        .font(.caption2)
-                    Text("\(count)")
-                        .font(.caption2)
-                        .fontWeight(.medium)
-                }
-                .padding(.horizontal, 8)
-                .padding(.vertical, 4)
-                .background(Color.accentColor.opacity(0.1), in: Capsule())
-                .foregroundStyle(Color.accentColor)
-            }
-
-            TextField("Ask a question about your documents...", text: $state.currentQuestion, axis: .vertical)
-                .textFieldStyle(.plain)
-                .lineLimit(1...5)
-                .focused($isFocused)
-                .onSubmit {
-                    if !appState.currentQuestion.isEmpty {
-                        Task { await appState.sendQuestion() }
+        VStack(alignment: .leading, spacing: 8) {
+            // Expert indicator bar
+            if let selectedExpert = appState.selectedExpert {
+                ExpertIndicatorBar(expert: selectedExpert) {
+                    withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                        appState.selectedExpert = nil
                     }
                 }
-                .disabled(!appState.hasSelectedFolders || appState.isGenerating)
-
-            Button {
-                Task { await appState.sendQuestion() }
-            } label: {
-                Image(systemName: appState.isGenerating ? "stop.circle.fill" : "arrow.up.circle.fill")
-                    .font(.title2)
-                    .foregroundStyle(canSend ? Color.accentColor : Color.gray.opacity(0.3))
             }
-            .buttonStyle(.borderless)
-            .disabled(!canSend)
-            .keyboardShortcut(.return, modifiers: .command)
+
+            HStack(alignment: .bottom, spacing: 12) {
+                // Expert selector
+                if appState.settings.showExpertSelector && !appState.experts.isEmpty {
+                    ExpertPickerMenu()
+                }
+
+                // Selected folder pills
+                if appState.hasSelectedFolders {
+                    HStack(spacing: 4) {
+                        let count = appState.selectedFolderIds.count
+                        Image(systemName: "folder.fill")
+                            .font(.caption2)
+                        Text("\(count)")
+                            .font(.caption2)
+                            .fontWeight(.medium)
+                    }
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(Color.accentColor.opacity(0.1), in: Capsule())
+                    .foregroundStyle(Color.accentColor)
+                }
+
+                TextField("Ask a question about your documents...", text: $state.currentQuestion, axis: .vertical)
+                    .textFieldStyle(.plain)
+                    .lineLimit(1...5)
+                    .focused($isFocused)
+                    .onSubmit {
+                        if !appState.currentQuestion.isEmpty {
+                            Task { await appState.sendQuestion() }
+                        }
+                    }
+                    .disabled(!appState.hasSelectedFolders || appState.isGenerating)
+
+                Button {
+                    Task { await appState.sendQuestion() }
+                } label: {
+                    Image(systemName: appState.isGenerating ? "stop.circle.fill" : "arrow.up.circle.fill")
+                        .font(.title2)
+                        .foregroundStyle(canSend ? Color.accentColor : Color.gray.opacity(0.3))
+                }
+                .buttonStyle(.borderless)
+                .disabled(!canSend)
+                .keyboardShortcut(.return, modifiers: .command)
+            }
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 12)
@@ -170,6 +186,83 @@ struct InputBar: View {
         !appState.currentQuestion.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
         && appState.hasSelectedFolders
         && !appState.isGenerating
+    }
+}
+
+struct ExpertIndicatorBar: View {
+    let expert: Expert
+    let onClear: () -> Void
+
+    var body: some View {
+        HStack(spacing: 8) {
+            Image(systemName: "person.badge.key.fill")
+                .foregroundStyle(.orange)
+            Text(expert.name)
+                .font(.caption)
+                .fontWeight(.medium)
+            Text("active")
+                .font(.caption2)
+                .foregroundStyle(.secondary)
+            Spacer()
+            Button {
+                onClear()
+            } label: {
+                Image(systemName: "xmark.circle.fill")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            .buttonStyle(.borderless)
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 6)
+        .background(.orange.opacity(0.15), in: RoundedRectangle(cornerRadius: 8))
+    }
+}
+
+struct ExpertPickerMenu: View {
+    @Environment(AppState.self) private var appState
+
+    var body: some View {
+        Menu {
+            Button {
+                withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                    appState.selectedExpert = nil
+                }
+            } label: {
+                Label("No Expert", systemImage: "slash.circle")
+            }
+
+            if !appState.experts.isEmpty {
+                Divider()
+
+                ForEach(appState.experts) { expert in
+                    Button {
+                        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                            appState.selectedExpert = expert
+                        }
+                    } label: {
+                        Label(expert.name, systemImage: "person.badge.key")
+                    }
+                }
+            }
+        } label: {
+            HStack(spacing: 4) {
+                Image(systemName: "person.badge.key")
+                    .font(.caption)
+                if appState.selectedExpert != nil {
+                    Image(systemName: "chevron.up")
+                        .font(.caption2)
+                } else {
+                    Image(systemName: "chevron.down")
+                        .font(.caption2)
+                }
+            }
+            .padding(.horizontal, 8)
+            .padding(.vertical, 6)
+            .background(Color.orange.opacity(0.1), in: RoundedRectangle(cornerRadius: 6))
+        }
+        .menuStyle(.borderlessButton)
+        .fixedSize()
     }
 }
 

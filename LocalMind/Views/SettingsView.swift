@@ -21,6 +21,11 @@ struct SettingsView: View {
                 .tabItem {
                     Label("Indexing", systemImage: "doc.text.magnifyingglass")
                 }
+
+            ExpertSettingsTab()
+                .tabItem {
+                    Label("Experts", systemImage: "person.badge.key")
+                }
         }
         .frame(width: 480, height: 320)
     }
@@ -173,5 +178,86 @@ struct IndexingSettingsTab: View {
         .padding()
         .onChange(of: appState.settings.chunkSize) { appState.settings.save() }
         .onChange(of: appState.settings.chunkOverlap) { appState.settings.save() }
+    }
+}
+
+struct ExpertSettingsTab: View {
+    @Environment(AppState.self) private var appState
+
+    var body: some View {
+        @Bindable var state = appState
+
+        Form {
+            Section {
+                VStack(alignment: .leading, spacing: 12) {
+                    Label("What are Experts?", systemImage: "questionmark.circle")
+                        .font(.headline)
+
+                    Text("Experts are markdown files that provide query-time instructions. Create files named 'Expert*.md' in any indexed folder.")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+            }
+
+            Section("How to Create an Expert") {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("""
+                    ---
+                    name: Tax Expert
+                    description: Expert in tax calculations and regulations
+                    icon: dollarsign.circle
+                    ---
+
+                    # Tax Expert Instructions
+                    You are a tax preparation expert. When answering questions:
+                    - Always cite specific tax code sections
+                    - Use current tax year rates
+                    - Flag any assumptions made
+                    """)
+                    .font(.system(.caption, design: .monospaced))
+                    .padding(12)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(Color.primary.opacity(0.05), in: RoundedRectangle(cornerRadius: 8))
+                }
+            }
+
+            Section("Detected Experts") {
+                if appState.experts.isEmpty {
+                    Text("No experts found in indexed folders.")
+                        .foregroundStyle(.secondary)
+                } else {
+                    ForEach(appState.experts) { expert in
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(expert.name)
+                                .font(.body)
+                                .fontWeight(.medium)
+                            if let description = expert.description {
+                                Text(description)
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                            Text("from \(expert.sourceFolder)")
+                                .font(.caption2)
+                                .foregroundStyle(.tertiary)
+                        }
+                        .padding(.vertical, 4)
+                    }
+                }
+            }
+
+            Section("Settings") {
+                Toggle("Show expert selector in input bar", isOn: $state.settings.showExpertSelector)
+                Toggle("Auto-detect experts from folder names", isOn: $state.settings.autoDetectExperts)
+
+                Button("Refresh Experts") {
+                    Task { await appState.refreshExperts() }
+                }
+                .controlSize(.small)
+            }
+        }
+        .formStyle(.grouped)
+        .padding()
+        .onChange(of: appState.settings.showExpertSelector) { appState.settings.save() }
+        .onChange(of: appState.settings.autoDetectExperts) { appState.settings.save() }
     }
 }

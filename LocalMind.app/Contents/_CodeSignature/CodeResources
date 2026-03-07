@@ -31,6 +31,24 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>MacOS/LocalMind.debug.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			aaCZgQp0sgSh6OK5sMPX2AdADK0=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"69a099810a74b204a1e8e2b9b0c3d7d807400cad"</string>
+		</dict>
+		<key>MacOS/__preview.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			F2sEHYCJ4RnnncJvFSRINLeHxUA=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"176b041d8089e119e79dc26f15244834b787c540"</string>
+		</dict>
 		<key>Resources/AppIcon.icns</key>
 		<dict>
 			<key>hash2</key>

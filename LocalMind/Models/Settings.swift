@@ -8,6 +8,8 @@ struct AppSettings: Sendable {
     var chunkOverlap: Int
     var topK: Int
     var temperature: Double
+    var showExpertSelector: Bool
+    var autoDetectExperts: Bool
 
     static let `default` = AppSettings(
         ollamaBaseURL: "http://localhost:11434",
@@ -16,7 +18,9 @@ struct AppSettings: Sendable {
         chunkSize: 2000,
         chunkOverlap: 200,
         topK: 5,
-        temperature: 0.7
+        temperature: 0.7,
+        showExpertSelector: true,
+        autoDetectExperts: true
     )
 
     // UserDefaults keys
@@ -28,6 +32,8 @@ struct AppSettings: Sendable {
         static let chunkOverlap = "chunkOverlap"
         static let topK = "topK"
         static let temperature = "temperature"
+        static let showExpertSelector = "showExpertSelector"
+        static let autoDetectExperts = "autoDetectExperts"
     }
 
     static func load() -> AppSettings {
@@ -39,7 +45,9 @@ struct AppSettings: Sendable {
             chunkSize: defaults.integer(forKey: Keys.chunkSize).nonZero ?? AppSettings.default.chunkSize,
             chunkOverlap: defaults.integer(forKey: Keys.chunkOverlap).nonZero ?? AppSettings.default.chunkOverlap,
             topK: defaults.integer(forKey: Keys.topK).nonZero ?? AppSettings.default.topK,
-            temperature: defaults.double(forKey: Keys.temperature).nonZero ?? AppSettings.default.temperature
+            temperature: defaults.double(forKey: Keys.temperature).nonZero ?? AppSettings.default.temperature,
+            showExpertSelector: defaults.object(forKey: Keys.showExpertSelector) as? Bool ?? AppSettings.default.showExpertSelector,
+            autoDetectExperts: defaults.object(forKey: Keys.autoDetectExperts) as? Bool ?? AppSettings.default.autoDetectExperts
         )
     }
 
@@ -52,6 +60,8 @@ struct AppSettings: Sendable {
         defaults.set(chunkOverlap, forKey: Keys.chunkOverlap)
         defaults.set(topK, forKey: Keys.topK)
         defaults.set(temperature, forKey: Keys.temperature)
+        defaults.set(showExpertSelector, forKey: Keys.showExpertSelector)
+        defaults.set(autoDetectExperts, forKey: Keys.autoDetectExperts)
     }
 }
 

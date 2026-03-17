@@ -9,18 +9,19 @@ import math
 from PIL import Image, ImageDraw, ImageFilter
 
 # Icon sizes needed for macOS app icon set
+# Format: (actual_pixel_size, nominal_size) - @2x images are 2x the nominal size
 SIZES = [
-    (16, 16),
-    (16, 16),    # @2x
-    (32, 32),
-    (32, 32),    # @2x
-    (128, 128),
-    (128, 128),  # @2x
-    (256, 256),
-    (256, 256),  # @2x
-    (512, 512),
-    (512, 512),  # @2x
-    (1024, 1024),
+    (16, 16),      # 16x16 @1x
+    (32, 16),      # 16x16 @2x = 32px actual
+    (32, 32),      # 32x32 @1x
+    (64, 32),      # 32x32 @2x = 64px actual
+    (128, 128),    # 128x128 @1x
+    (256, 128),    # 128x128 @2x = 256px actual
+    (256, 256),    # 256x256 @1x
+    (512, 256),    # 256x256 @2x = 512px actual
+    (512, 512),    # 512x512 @1x
+    (1024, 512),   # 512x512 @2x = 1024px actual
+    (1024, 1024),  # 1024x1024 @1x (App Store)
 ]
 
 def create_icon(size):

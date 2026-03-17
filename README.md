@@ -52,21 +52,29 @@ ollama pull nomic-embed-text
 
 ## How to Build
 
-1. **Generate the Xcode project**:
+1. **Generate the Xcode project** (if needed):
    ```bash
    cd LocalMind
    xcodegen generate
    ```
 
-2. **Open in Xcode**:
+2. **Generate app icons** (optional - requires Python and Pillow):
+   ```bash
+   python3 generate_icon.py
+   ```
+
+3. **Open in Xcode**:
    ```bash
    open LocalMind.xcodeproj
    ```
 
-3. **Run** (Cmd+R in Xcode) or build from command line:
+4. **Run** (Cmd+R in Xcode) or build from command line:
    ```bash
    xcodebuild -project LocalMind.xcodeproj -scheme LocalMind -configuration Debug build
    ```
+
+The built app will be located at:
+- Xcode DerivedData: `~/Library/Developer/Xcode/DerivedData/LocalMind-*/Build/Products/Debug/LocalMind.app`
 
 ## How to Use
 
